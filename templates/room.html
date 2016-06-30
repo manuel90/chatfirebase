@@ -1,0 +1,11 @@
+<div class="wrapper-chat">
+	<div class="wrapper-messages">
+		<div ng-repeat="(idx, message) in allChatsMessages[roomId] track by $index" class="div-message{{message.owner == 'me' ? ' message-me' : ' message-other'}}"><span class="user">{{message.user}}</span>{{message.text}}</div>
+	</div>
+	<div class="form-message form-group">
+		<input id="field_message" ng-model="textMessage" type="text" class="form-control" placeholder="Write here!">
+		<button id="btn_send_message" class="btn btn-primary" ng-click="send()">Send</button>
+		<a href="#/rooms" class="btn btn-link btn-leave-room"><< Leave</a>
+		<button ng-click="logout()" class="btn btn-danger btn-xs btn-logout">Log out</button>
+	</div>
+</div>

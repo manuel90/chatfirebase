@@ -1,0 +1,154 @@
+html, body {
+	height: 100%;
+}
+.full-height {
+	height: 100%;
+}
+.clr {
+	clear: both;
+}
+.form-login {
+	width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 40px;
+    border-radius: 10px;
+    top: 10px;
+    position: relative;
+}
+
+.form-login h3 {
+	text-align: center;
+    font-weight: bold;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.rooms .btn {
+	width: 100%;
+	margin: 15px 0;
+}
+
+.block-center {
+	margin: 0 auto;
+	display: table;
+}
+
+.btn-logout {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.view {
+	position: relative;
+}
+
+.wrapper-chat {
+	height: 100%;
+	width: 50%;
+	position: relative;
+	border: 1px solid #777;
+	margin: 0 auto;
+}
+.wrapper-chat .wrapper-messages {
+	height: calc(100vh - 70px);
+	overflow: auto;
+}
+.wrapper-chat .form-message {
+	position: absolute;
+	height: 70px;
+	bottom: 0;
+	border-top: 1px solid #777;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+    background-color: #fff;
+}
+.wrapper-chat .form-message #field_message {
+	display: inline;
+	width: 70%;
+}
+.wrapper-chat .form-message  #btn_send_message {
+	display: inline;
+	width: 29%;
+}
+
+.wrapper-chat .form-message .btn-logout {
+	bottom: 5px;
+    top: inherit;
+    right: 10px;
+}
+
+.wrapper-chat .form-message .btn-leave-room {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.wrapper-chat .div-message {
+	background-color: #fff;
+    border: 1px solid #aaa;
+    margin: 5px;
+    width: 50%;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.wrapper-chat .div-message.message-me {
+	float: right;
+}
+
+.wrapper-chat .div-message.message-other {
+	float: left;
+}
+
+.wrapper-chat .div-message.message-me .user {
+	right: 0;
+	border-radius: 0 8px 0 0;
+}
+.wrapper-chat .div-message.message-other .user {
+	left: 0;
+	border-radius: 8px 0 0 0;
+}
+
+.wrapper-chat .div-message .user {
+	font-style: italic;
+    font-size: x-small;
+    position: absolute;
+    top: 0;
+    font-weight: bold;
+    color: #fff;
+    background-color: #337ab7;
+    padding: 0 10px;
+}
+
+.bg-chat {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-anime {
+	background-image: url("https://i.ytimg.com/vi/S7OCzDNeENg/maxresdefault.jpg");
+}
+
+.bg-tvseries {
+	background-image: url("http://images-cdn.moviepilot.com/image/upload/c_fill,h_1080,w_1920/t_mp_quality/arrow_tv_series-1920x1080-arrow-season-3-adds-new-cast-member-jpeg-63195.jpg");
+}
+
+.bg-developers {
+	background-image: url("https://codegeekz.com/wp-content/uploads/code1.jpg");
+}
+
+.bg-technology {
+	background-image: url("http://technologyventures.constellation.com/wp-content/uploads/2015/03/home-banner-two-new.jpg");
+}
+
+.bg-sports {
+	background-image: url("http://studentsblog.viublogs.org/files/2013/10/Sport-Tournament-picture.jpg");
+}
+
+.bg-any {
+	background-image: url("http://www.codeproject.com/KB/Wearables/831012/internet-of-things-800x535.jpg");
+}
