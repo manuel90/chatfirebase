@@ -3,9 +3,9 @@
 		<div ng-repeat="(idx, message) in allChatsMessages[roomId] track by $index" class="div-message{{message.owner == 'me' ? ' message-me' : ' message-other'}}"><span class="user">{{message.user}}</span>{{message.text}}</div>
 	</div>
 	<div class="form-message form-group">
-		<input id="field_message" ng-model="textMessage" type="text" class="form-control" placeholder="write a message">
+		<input id="field_message" ng-model="textMessage" type="text" class="form-control" placeholder="write a message" ng-keypress="enterSend($event)">
 		<button id="btn_send_message" class="btn btn-primary" ng-click="send()">Send</button>
 		<a href="#/room" class="btn btn-link btn-leave-room icon-angle-double-left">Exit</a>
-		<a ng-click="logout()" title="Log out" class="text-danger btn-xs btn-logout icon-logout"></a>
+		<a ng-click="logout()" title="Log out" class="text-danger btn-logout icon-logout"></a>
 	</div>
 </div>

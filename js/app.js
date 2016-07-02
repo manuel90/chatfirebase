@@ -1,5 +1,8 @@
 var ref = new Firebase("https://quickchat-c333d.firebaseio.com/");
 
+Object.defineProperty(window, 'KEY_ENTER', {
+	value: 13
+});
 
 function IDGenerator() {
 	 
@@ -89,6 +92,12 @@ app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location,
 	$scope.logout = function() {
 		myName = null;
 		$scope.go('/');
+	};
+
+	$scope.enterSend = function(event) {
+		if(event.keyCode == KEY_ENTER) {
+			$scope.send();
+		}
 	};
 
 	$scope.send = function() {

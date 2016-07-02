@@ -32,6 +32,10 @@ html, body {
     margin: 0 0 15px 0;
 }
 
+.form-login .btn-login {
+	width: 100%;
+}
+
 .rooms .btn {
 	width: 100%;
 	margin: 15px 0;
@@ -181,7 +185,7 @@ html, body {
 	.wrapper-chat {
 		width: 100%;
 	}
-	
+
 	.wrapper-chat .form-message {
 		height: auto;
 	}
