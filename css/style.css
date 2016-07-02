@@ -65,7 +65,7 @@ html, body {
 
 .wrapper-chat {
 	height: 100%;
-	width: 50%;
+	width: 80%;
 	position: relative;
 	border: 1px solid #777;
 	margin: 0 auto;
@@ -164,7 +164,7 @@ html, body {
 }
 
 .bg-technology {
-	background-image: url("http://technologyventures.constellation.com/wp-content/uploads/2015/03/home-banner-two-new.jpg");
+	background-image: url("http://www.eir.co.uk/media/2015/01/Innovation-Communications-Technology-2.jpg");
 }
 
 .bg-sports {
@@ -173,4 +173,36 @@ html, body {
 
 .bg-any {
 	background-image: url("http://www.codeproject.com/KB/Wearables/831012/internet-of-things-800x535.jpg");
+}
+
+/******** Media Queries ************************************************/
+
+@media (max-width: 600px) {
+	.wrapper-chat {
+		width: 100%;
+	}
+	
+	.wrapper-chat .form-message {
+		height: auto;
+	}
+
+	.wrapper-chat .div-message {
+		width: 85%;
+	}
+
+	.wrapper-chat .form-message .btn-logout ,
+	.wrapper-chat .form-message .btn-leave-room {
+		display: table;
+	    margin: 0 auto;
+	    position: initial;
+	    text-align: center;
+	}
+
+	.wrapper-chat .form-message  #btn_send_message ,
+	.wrapper-chat .form-message #field_message {
+		display: table;
+	    margin: 0 auto;
+	    width: 100%;
+	    text-align: center;
+	}
 }

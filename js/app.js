@@ -29,9 +29,9 @@ var generator = new IDGenerator();
 var meId = generator.generate();
 var myName = null;
 
-var app = angular.module('firebaseApp', ['ngRoute', 'ngAnimate', 'firebase']);
+var app = angular.module('firebaseApp', ['ngRoute', 'ngAnimate', 'firebase', 'facebook']);
 
-app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location, $firebaseObject) {
+app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location, $firebaseObject, Facebook) {
 
 	$scope.params = $routeParams;
 
@@ -109,8 +109,76 @@ app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location,
 		return $scope.params.roomId ? 'bg-chat bg-'+$scope.params.roomId : '';
 	};
 
+
+	/******* Facebook login functions **********************/
+
+	$scope.logged = false;
+	$scope.user = {};
+
+	$scope.$watch(function(){
+		return Facebook.isReady();
+	}, function(newVal){
+		if(newVal) {
+			$scope.facebookReady = true;
+		}
+	});
+
+	var userIsConnected = false;
+
+	Facebook.getLoginStatus(function(response){
+		if(response.status == 'connected') {
+			userIsConnected = true;
+		}
+	});
+
+	$scope.loginFB = function() {
+		if(!userIsConnected) {
+			$scope.loginF();
+		}
+	};
+
+	$scope.loginF = function() {
+		Facebook.login(function(response){
+			if(response.status == 'connected') {
+				$scope.logged = true;
+				$scope.me();
+			}
+		});
+	};
+
+	$scope.me = function() {
+		Facebook.api('/me', function(response){
+			$scope.$apply(function(){
+				$scope.user = response;
+			});
+		});
+	};
+
+	$scope.logoutFB = function() {
+		Facebook.logout(function(){
+			$scope.$apply(function(){
+				$scope.user = {};
+				$scope.logged = false;
+			});
+		});
+	};
+
+	$scope.$on('Facebook:statusChange', function(ev, data){
+		console.log('Status', data);
+
+		if(data.status == 'connected') {
+			$scope.$apply(function(){
+				//
+			});
+		}
+	});
+
 });
 
+app.config(['FacebookProvider', function(FacebookProvider) {
+	var appId = "423840851054944";//"115542472210842";
+	FacebookProvider.init(appId);
+}]);
 
 app.config(function($routeProvider, $locationProvider) {
 	var execute = function() {
