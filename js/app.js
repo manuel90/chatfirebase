@@ -29,18 +29,15 @@ var generator = new IDGenerator();
 var meId = generator.generate();
 var myName = null;
 
+var app = angular.module('firebaseApp', ['ngRoute', 'ngAnimate', 'firebase']);
 
-
-
-
-
-var app = angular.module('firebaseApp', ['ngRoute', 'ngAnimate']);
-
-app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location) {
+app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location, $firebaseObject) {
 
 	$scope.params = $routeParams;
 
 	$scope.roomId = $routeParams.roomId;
+
+	$scope.root = $firebaseObject(ref);
 
 	$scope.allChatsMessages = {
 		anime: [],
@@ -51,17 +48,17 @@ app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location)
 		tvseries: []
 	};
 
-	var updateChat = function(snapshot) {
-		//var list = angular.element(jQuery("#chat"));
-		
+	var updateChat = function(snapshot) {		
 		var current = snapshot.val();
 
 		if(current.text) {
+			
 			$scope.allChatsMessages[current.room].push({
 				owner: current.me.id == meId ? 'me' : 'other',
 				user: current.me.name,
 				text: current.text
 			});
+			
 		}
 	}
 
@@ -85,12 +82,12 @@ app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location)
 		
 		if(this.nickname) {
 			myName = this.nickname;
-			
-			$scope.go('/rooms');
+			$scope.go('/room');
 		}
 	};
 
 	$scope.logout = function() {
+		myName = null;
 		$scope.go('/');
 	};
 
@@ -116,32 +113,24 @@ app.controller('FireBaseCtrl', function($scope, $route, $routeParams, $location)
 
 
 app.config(function($routeProvider, $locationProvider) {
-
+	var execute = function() {
+		jQuery('#container-view').removeClass('full-height');
+	};
 	//------------ Home -----------------------------
 	$routeProvider.when('/', {
 		templateUrl: 'templates/login.html',
 		controller: 'FireBaseCtrl',
 		resolve: {
-			// I will cause a 1 second delay
-			delay: function($q, $timeout) {
-				var delay = $q.defer();
-				$timeout(delay.resolve, 1000);
-				return delay.promise;
-			}
+			delay: execute
 		}
 	});
 
 	//------------ Chat rooms -----------------------------
-	$routeProvider.when('/rooms', {
+	$routeProvider.when('/room', {
 		templateUrl: 'templates/chat_rooms.html',
 		controller: 'FireBaseCtrl',
 		resolve: {
-			// I will cause a 1 second delay
-			delay: function($q, $timeout) {
-				var delay = $q.defer();
-				$timeout(delay.resolve, 1000);
-				return delay.promise;
-			}
+			delay: execute
 		}
 	});
 
@@ -150,9 +139,8 @@ app.config(function($routeProvider, $locationProvider) {
 		templateUrl: 'templates/room.html',
 		controller: 'FireBaseCtrl',
 		resolve: {
-			// I will cause a 1 second delay
 			delay: function($q, $timeout) {
-
+				jQuery('#container-view').addClass('full-height');
 			}
 		}
 	});

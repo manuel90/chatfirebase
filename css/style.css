@@ -7,14 +7,22 @@ html, body {
 .clr {
 	clear: both;
 }
+#main-title {
+	margin-top: 0;
+}
+#main-title.icon-chat {
+	font-size: 30px;
+	text-align: center;
+}
+#main-title.icon-chat:before {
+	font-size: 40px;
+}
 .form-login {
 	width: 300px;
     margin: 0 auto;
     border: 1px solid #ddd;
     padding: 40px;
     border-radius: 10px;
-    top: 10px;
-    position: relative;
 }
 
 .form-login h3 {
@@ -40,8 +48,19 @@ html, body {
 	right: 0;
 }
 
-.view {
+#container-view {
 	position: relative;
+	padding: 30px 2%;
+}
+
+.icon-logout.btn-logout {
+	font-size: 30px;
+}
+
+.btn-logout {
+	top: 30px;
+	right: 2%;
+	cursor: pointer;
 }
 
 .wrapper-chat {
@@ -75,9 +94,12 @@ html, body {
 }
 
 .wrapper-chat .form-message .btn-logout {
-	bottom: 5px;
+	bottom: 0px;
     top: inherit;
     right: 10px;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .wrapper-chat .form-message .btn-leave-room {
