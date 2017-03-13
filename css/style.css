@@ -75,7 +75,7 @@ html, body {
 	margin: 0 auto;
 }
 .wrapper-chat .wrapper-messages {
-	height: calc(100vh - 70px);
+	height: calc(100vh - 130px);
 	overflow: auto;
 }
 .wrapper-chat .form-message {
